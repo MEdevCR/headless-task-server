@@ -3,12 +3,12 @@ FROM node:20.17-slim
 ENV DEBIAN_FRONTEND noninteractive
 
 # Fonts as packages
-RUN echo "deb http://httpredir.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list \
-    && echo "deb http://httpredir.debian.org/debian buster-updates main contrib non-free" >> /etc/apt/sources.list \
-    && echo "deb http://security.debian.org/ buster/updates main contrib non-free" >> /etc/apt/sources.list \
+# Using archive.debian.org for Debian Buster (EOL but archived)
+RUN echo "deb http://archive.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list \
+    && echo "deb http://archive.debian.org/debian buster-updates main contrib non-free" >> /etc/apt/sources.list \
+    && echo "deb http://archive.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list \
     && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections \
     && apt-get update
-
 
 #libudev1 - hot fix downgade for chrome 109, remove when install dep will be fixed
 RUN apt-get install -y --allow-downgrades \
