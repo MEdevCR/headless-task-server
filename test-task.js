@@ -5,7 +5,7 @@ const axios = require('axios');
  * Der Server muss mit SHOW_CHROME=true gestartet werden, um den Browser anzuzeigen
  */
 
-const SERVER_URL = 'http://localhost:8080';
+const SERVER_URL = 'http://10.10.15.2:8080';
 const AUTH_KEY = null; // Falls ein AUTH_KEY gesetzt ist, hier eintragen
 
 async function sendTask() {
